@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currículum Vitae | Nombre Apellido</title>
+    <meta
+      name="description"
+      content="Currículum Vitae profesional de Nombre Apellido, con experiencia en gestión, tecnología y liderazgo."
+    />
+    <style>
+      :root {
+        --bg: #08111f;
+        --bg-soft: #101b2d;
+        --panel: rgba(19, 34, 52, 0.88);
+        --panel-strong: #15263d;
+        --card: #f5f7fb;
+        --primary: #5eead4;
+        --secondary: #7c9cff;
+        --accent: #fbbf24;
+        --text: #e5eefb;
+        --muted: #9fb7d1;
+        --dark-text: #112033;
+        --line: rgba(255, 255, 255, 0.1);
+        --shadow: 0 16px 42px rgba(7, 15, 30, 0.45);
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(94, 234, 212, 0.12), transparent 28%),
+          radial-gradient(circle at right, rgba(124, 156, 255, 0.14), transparent 30%),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(12px);
+        background: rgba(8, 17, 31, 0.7);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 74px;
+      }
+
+      .brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .brand span {
+        color: var(--primary);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        align-items: center;
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+
+      .nav-links a:hover { color: var(--text); }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.92rem 1.7rem;
+        border-radius: 999px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), #6dd7ff);
+        color: #062335;
+        box-shadow: 0 12px 24px rgba(94, 234, 212, 0.25);
+      }
+
+      .btn-secondary {
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+      }
+
+      .hero {
+        padding: 88px 0 42px;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 42px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 18px;
+        padding: 0.5rem 0.8rem;
+        background: rgba(94, 234, 212, 0.12);
+        border: 1px solid rgba(94, 234, 212, 0.25);
+        color: var(--primary);
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2.7rem, 4vw, 4.6rem);
+        line-height: 1.06;
+        letter-spacing: -0.05em;
+      }
+
+      .hero h1 .accent {
+        color: var(--primary);
+      }
+
+      .lead {
+        max-width: 640px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .meta-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .meta-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--primary);
+        box-shadow: 0 0 0 6px rgba(94, 234, 212, 0.12);
+      }
+
+      .profile-card {
+        position: relative;
+        background: linear-gradient(180deg, rgba(20, 41, 64, 0.9), rgba(13, 23, 36, 0.9));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .photo-wrap {
+        position: relative;
+        overflow: hidden;
+        border-radius: 22px;
+        min-height: 450px;
+        background: linear-gradient(135deg, rgba(124, 156, 255, 0.18), rgba(94, 234, 212, 0.18));
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .photo-wrap::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(7, 14, 23, 0.08), rgba(7,14,23,0.48));
+      }
+
+      .portrait {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(160deg, #e6f0ff 0%, #b7c8de 18%, #5276a6 54%, #1c2d45 100%);
+      }
+
+      .portrait::before,
+      .portrait::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .portrait::before {
+        width: 160px;
+        height: 160px;
+        left: 50%;
+        top: 18%;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, #f8d4b8, #d59c82);
+        box-shadow: inset 0 -10px 0 rgba(0, 0, 0, 0.08);
+      }
+
+      .portrait::after {
+        width: 260px;
+        height: 260px;
+        left: 50%;
+        bottom: -18%;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, #b7c8de, #5e7b9e 65%, #233751 100%);
+      }
+
+      .badge {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        background: rgba(7, 15, 30, 0.85);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px;
+        padding: 0.95rem 1rem;
+        box-shadow: 0 18px 26px rgba(6, 10, 18, 0.3);
+      }
+
+      .badge strong {
+        display: block;
+        font-size: 1.3rem;
+        color: var(--primary);
+      }
+
+      section {
+        padding: 34px 0 20px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 24px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 2.7rem);
+        letter-spacing: -0.04em;
+      }
+
+      .section-kicker {
+        color: var(--primary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.74rem;
+      }
+
+      .about-grid,
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+
+      .panel {
+        background: rgba(17, 30, 47, 0.8);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 28px;
+      }
+
+      .panel p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 20px;
+      }
+
+      .stat {
+        padding: 22px 18px;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: clamp(1.6rem, 3vw, 2.3rem);
+        line-height: 1.1;
+        color: var(--primary);
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .experience-list,
+      .education-list,
+      .project-grid,
+      .contact-list {
+        display: grid;
+        gap: 18px;
+      }
+
+      .timeline-item,
+      .edu-item,
+      .project-card,
+      .contact-card {
+        background: rgba(17, 30, 47, 0.8);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px;
+      }
+
+      .timeline-head,
+      .edu-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 8px;
+      }
+
+      .timeline-item h3,
+      .edu-item h3,
+      .project-card h3 {
+        margin: 0;
+        font-size: 1.1rem;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 34px;
+        padding: 0.4rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(124, 156, 255, 0.12);
+        border: 1px solid rgba(124, 156, 255, 0.2);
+        color: #b9c7ff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .timeline-item p,
+      .edu-item p,
+      .project-card p,
+      .contact-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .skills-wrap {
+        display: grid;
+        gap: 18px;
+      }
+
+      .skill-group {
+        background: rgba(17, 30, 47, 0.8);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 24px;
+      }
+
+      .skill-group h3 {
+        margin: 0 0 16px;
+        font-size: 1.05rem;
+      }
+
+      .chip-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .chip {
+        padding: 0.72rem 1rem;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        color: #dfe8f7;
+        font-weight: 600;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .project-card {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .project-thumb {
+        height: 150px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(94, 234, 212, 0.18), rgba(124, 156, 255, 0.22), rgba(251, 191, 36, 0.15));
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        gap: 22px;
+      }
+
+      .cta-panel {
+        padding: 30px;
+        background: linear-gradient(135deg, rgba(94, 234, 212, 0.12), rgba(124, 156, 255, 0.12));
+        border: 1px solid rgba(94, 234, 212, 0.18);
+        border-radius: 24px;
+      }
+
+      .cta-panel h3 {
+        margin: 0 0 12px;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        letter-spacing: -0.04em;
+      }
+
+      .contact-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--text);
+      }
+
+      .site-footer {
+        padding: 18px 0 36px;
+        color: var(--muted);
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero-inner,
+        .about-grid,
+        .two-col,
+        .contact-wrap,
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          gap: 14px;
+          font-size: 0.8rem;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .nav {
+          flex-direction: column;
+          padding: 16px 0;
+          gap: 14px;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 52px;
+        }
+
+        .stats-grid,
+        .contact-list {
+          grid-template-columns: 1fr;
+        }
+
+        .section-title {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="#inicio">Nombre <span>Apellido</span></a>
+        <nav class="nav-links" aria-label="Navegación principal">
+          <a href="#about">Sobre mí</a>
+          <a href="#experiencia">Experiencia</a>
+          <a href="#habilidades">Habilidades</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div class="container hero-inner">
+          <div>
+            <div class="eyebrow">Currículum profesional</div>
+            <h1>
+              Impulso ideas que<br />
+              <span class="accent">transforman resultados.</span>
+            </h1>
+            <p class="lead">
+              Soy un profesional con enfoque estratégico, experiencia en liderazgo,
+              gestión de proyectos y soluciones innovadoras que conectan tecnología,
+              operación y crecimiento empresarial.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#contacto">Contacto</a>
+              <a class="btn btn-secondary" href="#proyectos">Ver proyectos</a>
+            </div>
+            <div class="meta-list">
+              <div class="meta-item"><span class="meta-dot"></span> +8 años de experiencia</div>
+              <div class="meta-item"><span class="meta-dot"></span> Gestión y operaciones</div>
+              <div class="meta-item"><span class="meta-dot"></span> Disponibilidad inmediata</div>
+            </div>
+          </div>
+
+          <div class="profile-card" aria-label="Perfil profesional">
+            <div class="photo-wrap">
+              <div class="portrait"></div>
+              <div class="badge">
+                <strong>+8A</strong>
+                de trayectoria
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-title">
+            <div>
+              <div class="section-kicker">Sobre mí</div>
+              <h2>Perfil profesional</h2>
+            </div>
+          </div>
+
+          <div class="about-grid">
+            <div class="panel">
+              <p>
+                Profesional con sólida experiencia en coordinación, análisis, mejora de procesos
+                y liderazgo de equipos. Me caracterizo por ser proactivo, orientado a resultados
+                y capaz de transformar desafíos en oportunidades de crecimiento.
+              </p>
+            </div>
+
+            <div class="panel">
+              <div class="stats-grid">
+                <div class="stat">
+                  <strong>8+</strong>
+                  <span>Años de experiencia</span>
+                </div>
+                <div class="stat">
+                  <strong>12</strong>
+                  <span>Proyectos liderados</span>
+                </div>
+                <div class="stat">
+                  <strong>95%</strong>
+                  <span>Satisfacción de clientes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiencia">
+        <div class="container">
+          <div class="section-title">
+            <div>
+              <div class="section-kicker">Experiencia</div>
+              <h2>Trayectoria profesional</h2>
+            </div>
+          </div>
+
+          <div class="experience-list">
+            <article class="timeline-item">
+              <div class="timeline-head">
+                <h3>Gerente de Operaciones</h3>
+                <span class="tag">2021 - Presente</span>
+              </div>
+              <p><strong>Empresa XYZ</strong> · Quito, Ecuador</p>
+              <p>
+                Lidero la planificación estratégica de operaciones, optimización de procesos y
+                coordinación de equipos multidisciplinarios para mejorar eficiencia y resultados.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-head">
+                <h3>Coordinador de Proyectos</h3>
+                <span class="tag">2018 - 2021</span>
+              </div>
+              <p><strong>Consultora ABC</strong> · Guayaquil, Ecuador</p>
+              <p>
+                Gestioné proyectos de mejora continua, seguimiento de indicadores, gestión de
+                cronogramas y comunicación con clientes para asegurar cumplimiento de objetivos.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-head">
+                <h3>Analista de Procesos</h3>
+                <span class="tag">2015 - 2018</span>
+              </div>
+              <p><strong>Organización DEF</strong> · Cuenca, Ecuador</p>
+              <p>
+                Desarrollé diagnósticos de procesos, implementé mejoras operativas y apoyé la
+                automatización de tareas con impacto directo en tiempos y costos.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="habilidades">
+        <div class="container">
+          <div class="section-title">
+            <div>
+              <div class="section-kicker">Competencias</div>
+              <h2>Habilidades clave</h2>
+            </div>
+          </div>
+
+          <div class="skills-wrap">
+            <div class="skill-group">
+              <h3>Gestión y liderazgo</h3>
+              <div class="chip-list">
+                <span class="chip">Liderazgo de equipos</span>
+                <span class="chip">Planificación estratégica</span>
+                <span class="chip">Gestión de proyectos</span>
+                <span class="chip">Toma de decisiones</span>
+                <span class="chip">Facilitación</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3>Habilidades técnicas</h3>
+              <div class="chip-list">
+                <span class="chip">Excel avanzado</span>
+                <span class="chip">Power BI</span>
+                <span class="chip">CRM</span>
+                <span class="chip">Procesos BPM</span>
+                <span class="chip">Análisis de datos</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3>Soft skills</h3>
+              <div class="chip-list">
+                <span class="chip">Comunicación efectiva</span>
+                <span class="chip">Resolución de problemas</span>
+                <span class="chip">Trabajo bajo presión</span>
+                <span class="chip">Adaptabilidad</span>
+                <span class="chip">Enfoque al cliente</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos">
+        <div class="container">
+          <div class="section-title">
+            <div>
+              <div class="section-kicker">Logros</div>
+              <h2>Proyectos destacados</h2>
+            </div>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-thumb"></div>
+              <h3>Optimización de procesos</h3>
+              <p>
+                Rediseñé flujos de trabajo que redujeron tiempos operativos en un 28% y mejoraron
+                la productividad del equipo.
+              </p>
+            </article>
+
+            <article class="project-card">
+              <div class="project-thumb"></div>
+              <h3>Implementación de CRM</h3>
+              <p>
+                Lideré la adopción de un sistema de gestión de clientes que mejoró la trazabilidad,
+                la atención y la retención.
+              </p>
+            </article>
+
+            <article class="project-card">
+              <div class="project-thumb"></div>
+              <h3>Indicadores de desempeño</h3>
+              <p>
+                Diseñé un modelo de dashboards para seguimiento operativo y apoyo a la toma de
+                decisiones a nivel directivo.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto">
+        <div class="container contact-wrap">
+          <div class="cta-panel">
+            <div class="section-kicker">Contacto</div>
+            <h3>Estoy disponible para oportunidades profesionales.</h3>
+            <p>
+              Me interesa colaborar en proyectos que aporten valor, impulsen resultados y generen
+              impacto real en organizaciones con visión de crecimiento.
+            </p>
+            <div class="cta-row" style="margin-top: 22px;">
+              <a class="btn btn-primary" href="mailto:nombre@email.com">Enviar correo</a>
+              <a class="btn btn-secondary" href="tel:+593987654321">Llamar</a>
+            </div>
+          </div>
+
+          <div class="contact-list">
+            <div class="contact-card">
+              <strong>Email</strong>
+              <p>nombre@email.com</p>
+            </div>
+            <div class="contact-card">
+              <strong>Teléfono</strong>
+              <p>+593 98 765 4321</p>
+            </div>
+            <div class="contact-card">
+              <strong>Ubicación</strong>
+              <p>Quito, Ecuador</p>
+            </div>
+            <div class="contact-card">
+              <strong>LinkedIn</strong>
+              <p>linkedin.com/in/nombre</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">© 2026 Nombre Apellido · Todos los derechos reservados.</div>
+    </footer>
+  </body>
+</html>
